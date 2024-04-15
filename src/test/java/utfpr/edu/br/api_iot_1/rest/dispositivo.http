@@ -1,0 +1,27 @@
+@URL=http://localhost:8080/dispositivo
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome": "Roteador",
+    "localizacao": "Interno",
+    "gateway_id": "1"
+}
+
+### GET ALL
+GET {{URL}}
+### GET ID
+GET {{URL}}/1
+### GET ALL DISPOSITIVOS BY GATEWAY
+GET {{URL}}/gateway/1
+### DELETE
+DELETE {{URL}}/1
+### PUT
+PUT {{URL}}/1
+Content-Type: application/json
+
+{
+    "nome": "Roteador2",
+    "localizacao": "Interno2",
+}

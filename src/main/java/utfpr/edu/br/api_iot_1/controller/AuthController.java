@@ -1,0 +1,49 @@
+package utfpr.edu.br.api_iot_1.controller;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import utfpr.edu.br.api_iot_1.dto.AuthDTO;
+import utfpr.edu.br.api_iot_1.security.JwtUtil;
+import jakarta.validation.Valid;
+
+
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Value("${jwt_secret}")
+    private String jwtSecret;
+
+    @PostMapping
+    public ResponseEntity<Object> auth(@Valid @RequestBody AuthDTO authDTO) {
+        System.out.println(authDTO);
+
+        // dados do payload
+        var payload = new HashMap<String, Object>();
+        payload.put("username", authDTO.username);
+
+        var now = Instant.now();
+
+        var jwt = jwtUtil.generateToken(payload, jwtSecret, 36000);
+
+        var res = new HashMap<String, Object>();
+        res.put("token", jwt);
+        res.put("issuedIn", now);
+        res.put("expiresIn", now.plus(36000, ChronoUnit.SECONDS));
+        return ResponseEntity.ok().body(res);
+    }
+}
+

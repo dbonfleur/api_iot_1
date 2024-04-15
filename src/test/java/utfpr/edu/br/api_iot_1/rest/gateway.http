@@ -1,0 +1,27 @@
+@URL=http://localhost:8080/gateway
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "descricao": "Gateway 2",
+    "endereco": "teste.local.2",
+    "pessoa_id": "1"
+}
+
+### GET ALL
+GET {{URL}}
+### GET ID
+GET {{URL}}/1
+### GET ALL GATEWAYS BY PESSOA
+GET {{URL}}/pessoa/1
+### DELETE
+DELETE {{URL}}/1
+### PUT
+PUT {{URL}}/3
+Content-Type: application/json
+
+{
+    "descricao": "Gateway 2",
+    "endereco": "teste.local2"
+}

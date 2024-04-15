@@ -1,0 +1,28 @@
+@URL=http://localhost:8080/atuador
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome" : "Lampada",
+    "dispositivo_id" : "1"
+}
+
+### GET ALL
+GET {{URL}}
+### GET ID
+GET {{URL}}/1
+### GET ALL SENSOR BY DISPOSITIVO
+GET {{URL}}/dispositivo/1
+### DELETE
+DELETE {{URL}}/1
+### PUT
+PUT {{URL}}/1
+Content-Type: application/json
+
+{
+    "nome" : "Mov-2",
+    "tipo" : "Presença",
+    "ligado" : "false",
+    "dispositivo_id" : "1"
+}

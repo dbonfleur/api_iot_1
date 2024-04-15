@@ -1,0 +1,38 @@
+@URL=http://localhost:8080/pessoa
+
+@token =Bearer yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMxODM4MjMsImV4cCI6MTcxMzIxOTgyMywiaXNzIjoiVVRGUFIifQ.KLQ2uO6qJAFFWyxzZFzS29fE5__N93ObgjMI6jZ7r2M
+
+### CREATE
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome": "daniel",
+    "email": "daniel@email.com",
+    "senha": "12345678"
+}
+
+### GET ALL
+GET {{URL}}
+Authorization: {{token}}
+### GET ID
+GET {{URL}}/1
+### DELETE
+DELETE {{URL}}/2
+### PUT
+PUT {{URL}}/3
+Content-Type: application/json
+
+{
+    "nome": "nome1",
+    "email": "nome1@hotmail.com",
+}
+
+### AUTH
+POST http://localhost:8080/auth
+Content-Type: application/json
+
+{
+    "username": "daniel@email.com",
+    "password": "12345678"
+}
