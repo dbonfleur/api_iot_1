@@ -53,6 +53,9 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                 .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()
+                .requestMatchers(HttpMethod.POST, "/dispositivo").permitAll()
+                .requestMatchers(HttpMethod.POST, "/gateway").permitAll()
+                .requestMatchers(HttpMethod.POST, "/atuador").permitAll()
                 .anyRequest().authenticated();
 
         // Add JWT token filter

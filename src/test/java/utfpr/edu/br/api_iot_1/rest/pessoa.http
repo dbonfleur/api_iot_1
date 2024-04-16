@@ -1,6 +1,6 @@
 @URL=http://localhost:8080/pessoa
 
-@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzMDY3MjcsImV4cCI6MTcxMzM0MjcyNywiaXNzIjoiVVRGUFIifQ.bdqw8snuepbYN0Vw1nbIXO1c8yN_2shod1rJEIyPuRs
+@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzMDg3MDUsImV4cCI6MTcxMzM0NDcwNSwiaXNzIjoiVVRGUFIifQ.28aqJUOpc8Jsrzy-EwKaaF7ni1SknZ1tRnOD7OIJBZM
 
 ### CREATE
 POST {{URL}}
@@ -17,10 +17,13 @@ GET {{URL}}
 Authorization: {{token}}
 ### GET ID
 GET {{URL}}/1
+Authorization: {{token}}
 ### DELETE
 DELETE {{URL}}/2
+Authorization: {{token}}
 ### PUT
 PUT {{URL}}/3
+Authorization: {{token}}
 Content-Type: application/json
 
 {

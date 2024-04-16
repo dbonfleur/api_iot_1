@@ -1,4 +1,7 @@
 @URL=http://localhost:8080/atuador
+
+@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzMDk0NDgsImV4cCI6MTcxMzM0NTQ0OCwiaXNzIjoiVVRGUFIifQ.z7Oq7klQu1e-fFHvoxdqsv9iaNxwtKh4ivxMiSLizwY
+
 ### CREATE
 POST {{URL}}
 Content-Type: application/json
@@ -10,8 +13,10 @@ Content-Type: application/json
 
 ### GET ALL
 GET {{URL}}
+Authorization: {{token}}
 ### GET ID
 GET {{URL}}/1
+Authorization: {{token}}
 ### GET ALL SENSOR BY DISPOSITIVO
 GET {{URL}}/dispositivo/1
 ### DELETE
