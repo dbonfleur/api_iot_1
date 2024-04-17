@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import utfpr.edu.br.api_iot_1.dto.LeituraDTO;
 import utfpr.edu.br.api_iot_1.exception.NotFoundException;
 import utfpr.edu.br.api_iot_1.model.Leitura;
+import utfpr.edu.br.api_iot_1.model.Sensor;
 import utfpr.edu.br.api_iot_1.repository.LeituraRepository;
 import utfpr.edu.br.api_iot_1.repository.SensorRepository;
 
@@ -25,12 +26,15 @@ public class LeituraService {
         var leitura = new Leitura();
         BeanUtils.copyProperties(leituraDTO, leitura);
 
-        var sensor = sensorRepository.findById(leituraDTO.sensor_id());
-        if (sensor.isPresent())
-            
+        Sensor sensor = sensorRepository.findById(leituraDTO.sensor_id()).get();
+        
+        if (sensor == null) {
+            throw new RuntimeException("Pessoa não encontrada");
+        }
+
+        leitura.setSensor(sensor);
 
         return leituraRepository.save(leitura);
-        return leitura;
     }
 
     public List<Leitura> getAll() {

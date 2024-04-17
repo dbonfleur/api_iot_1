@@ -1,14 +1,15 @@
 @URL=http://localhost:8080/gateway
 
-@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzMDk0NDgsImV4cCI6MTcxMzM0NTQ0OCwiaXNzIjoiVVRGUFIifQ.z7Oq7klQu1e-fFHvoxdqsv9iaNxwtKh4ivxMiSLizwY
+@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzODc5ODgsImV4cCI6MTcxMzQyMzk4OCwiaXNzIjoiVVRGUFIifQ.KI5UOCBiDL3I6jv0dmNnut-05S24ikt-PBpuPIOzkz4
 
 ### CREATE
 POST {{URL}}
 Content-Type: application/json
+Authorization: {{token}}
 
 {
-    "descricao": "Gateway 2",
-    "endereco": "teste.local.2",
+    "descricao": "Gateway 1",
+    "endereco": "172.168.30.1",
     "pessoa_id": "1"
 }
 
@@ -20,23 +21,17 @@ GET {{URL}}/1
 Authorization: {{token}}
 ### GET ALL GATEWAYS BY PESSOA
 GET {{URL}}/pessoa/1
+Authorization: {{token}}
 ### DELETE
 DELETE {{URL}}/1
+Authorization: {{token}}
 ### PUT
 PUT {{URL}}/3
+Authorization: {{token}}
 Content-Type: application/json
 
 {
     "descricao": "Gateway 2",
-    "endereco": "teste.local2"
+    "endereco": "172.168.31.1"
 }
 
-
-### AUTH
-POST http://localhost:8080/auth
-Content-Type: application/json
-
-{
-    "username": "daniel@email.com",
-    "password": "12345678"
-}

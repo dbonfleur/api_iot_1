@@ -17,6 +17,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import jakarta.servlet.http.HttpServletResponse;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -26,11 +28,10 @@ public class WebSecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    @SuppressWarnings("removal")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // Enable CORS and disable CSRF
-        http = http.cors().and().csrf().disable();
+        http = http.cors(withDefaults()).csrf(csrf -> csrf.disable());
 
         // Set session management to stateless
         http = http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
@@ -46,17 +47,14 @@ public class WebSecurityConfig {
                                 }));
 
         // Set permissions on endpoints
-        http.authorizeHttpRequests()
-                .requestMatchers("/api-docs/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/index.html").permitAll()
-                .requestMatchers(HttpMethod.GET, "/").permitAll()
+        http.authorizeHttpRequests(requests -> requests
+                // .requestMatchers("/api-docs/**").permitAll()
+                // .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
+                // .requestMatchers(HttpMethod.GET, "/index.html").permitAll()
+                // .requestMatchers(HttpMethod.GET, "/").permitAll()
                 .requestMatchers(HttpMethod.POST, "/auth").permitAll()
                 .requestMatchers(HttpMethod.POST, "/pessoa").permitAll()
-                .requestMatchers(HttpMethod.POST, "/dispositivo").permitAll()
-                .requestMatchers(HttpMethod.POST, "/gateway").permitAll()
-                .requestMatchers(HttpMethod.POST, "/atuador").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated());
 
         // Add JWT token filter
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

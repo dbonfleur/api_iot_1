@@ -1,10 +1,11 @@
 @URL=http://localhost:8080/dispositivo
 
-@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzMDk0NDgsImV4cCI6MTcxMzM0NTQ0OCwiaXNzIjoiVVRGUFIifQ.z7Oq7klQu1e-fFHvoxdqsv9iaNxwtKh4ivxMiSLizwY
+@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzODc5ODgsImV4cCI6MTcxMzQyMzk4OCwiaXNzIjoiVVRGUFIifQ.KI5UOCBiDL3I6jv0dmNnut-05S24ikt-PBpuPIOzkz4
 
 ### CREATE
 POST {{URL}}
 Content-Type: application/json
+Authorization: {{token}}
 
 {
     "nome": "Roteador",
@@ -23,21 +24,14 @@ GET {{URL}}/gateway/1
 Authorization: {{token}}
 ### DELETE
 DELETE {{URL}}/1
+Authorization: {{token}}
 ### PUT
 PUT {{URL}}/1
 Content-Type: application/json
+Authorization: {{token}}
 
 {
     "nome": "Roteador2",
     "localizacao": "Interno2",
-}
-
-
-### AUTH
-POST http://localhost:8080/auth
-Content-Type: application/json
-
-{
-    "username": "daniel@email.com",
-    "password": "12345678"
+    "gateway_id": "1"
 }

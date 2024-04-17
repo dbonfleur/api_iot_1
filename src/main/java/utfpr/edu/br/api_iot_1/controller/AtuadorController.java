@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import utfpr.edu.br.api_iot_1.dto.AtuadorDTO;
 import utfpr.edu.br.api_iot_1.exception.NotFoundException;
 import utfpr.edu.br.api_iot_1.model.Atuador;
@@ -26,7 +27,7 @@ public class AtuadorController {
     private AtuadorService atuadorService;
 
     @PostMapping
-    public ResponseEntity<Object> create(@RequestBody AtuadorDTO dto) {
+    public ResponseEntity<Object> create(@Valid @RequestBody AtuadorDTO dto) {
         try {
             var res = atuadorService.create(dto);
             /**
@@ -75,7 +76,7 @@ public class AtuadorController {
      * @throws NotFoundException
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable long id, @RequestBody AtuadorDTO dto) {
+    public ResponseEntity<Object> update(@PathVariable long id, @Valid @RequestBody AtuadorDTO dto) {
         try {
             return ResponseEntity.ok().body(atuadorService.update(id, dto));
         } catch (NotFoundException e) {

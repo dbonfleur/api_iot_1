@@ -1,24 +1,33 @@
 @URL=http://localhost:8080/leitura
+@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzODc4MjEsImV4cCI6MTcxMzQyMzgyMSwiaXNzIjoiVVRGUFIifQ.2_hIMXAQ5NsnhLDGJGK9CoKyTGS07C0_bhNPbq5x9s0
 ### CREATE
 POST {{URL}}
+Authorization: {{token}}
 Content-Type: application/json
 
 {
-
+    "valor": "950",
+    "data" : "17-04-2024",
+    "sensor_id": "1"
 }
 
 ### GET ALL
 GET {{URL}}
+Authorization: {{token}}
 ### GET ID
 GET {{URL}}/1
+Authorization: {{token}}
 ### GET ALL LEITURA BY 
 GET {{URL}}/sensor/1
+Authorization: {{token}}
 ### DELETE
 DELETE {{URL}}/1
+Authorization: {{token}}
 ### PUT
 PUT {{URL}}/1
 Content-Type: application/json
 
 {
-
+    "valor": "0",
+    "data" : "01-01-2024"
 }

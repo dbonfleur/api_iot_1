@@ -1,7 +1,6 @@
 package utfpr.edu.br.api_iot_1.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,10 +9,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AuthDTO {
-    @NotBlank
-    @Size(min = 3)
+    @NotBlank(message = "O nome de usuário não pode estar vazio.")
     public String username;
-    @NotBlank
-    @Size(min = 3)
+
+    @NotBlank(message = "A senha não pode estar vazia.")
     public String password;
 }

@@ -30,6 +30,7 @@ public class GatewayService {
         BeanUtils.copyProperties(gatewayDTO, gateway);
 
         Pessoa pessoa = pessoaRepository.findById(gatewayDTO.pessoa_id()).get();
+        
         if (pessoa == null) {
             throw new RuntimeException("Pessoa não encontrada");
         }

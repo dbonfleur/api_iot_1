@@ -1,8 +1,8 @@
 @URL=http://localhost:8080/pessoa
 
-@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzMDg3MDUsImV4cCI6MTcxMzM0NDcwNSwiaXNzIjoiVVRGUFIifQ.28aqJUOpc8Jsrzy-EwKaaF7ni1SknZ1tRnOD7OIJBZM
+@token =Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzODc5ODgsImV4cCI6MTcxMzQyMzk4OCwiaXNzIjoiVVRGUFIifQ.KI5UOCBiDL3I6jv0dmNnut-05S24ikt-PBpuPIOzkz4
 
-### CREATE
+### CREATE CERTO
 POST {{URL}}
 Content-Type: application/json
 
@@ -10,6 +10,16 @@ Content-Type: application/json
     "nome": "daniel",
     "email": "daniel@email.com",
     "senha": "12345678"
+}
+
+### CREATE ERRADO
+POST {{URL}}
+Content-Type: application/json
+
+{
+    "nome": "teste",
+    "email": "email.com",
+    "senha": "12345"
 }
 
 ### GET ALL

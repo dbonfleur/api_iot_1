@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import utfpr.edu.br.api_iot_1.dto.LeituraDTO;
 import utfpr.edu.br.api_iot_1.exception.NotFoundException;
 import utfpr.edu.br.api_iot_1.model.Leitura;
@@ -26,7 +27,7 @@ public class LeituraController {
     private LeituraService leituraService;
 
     @PostMapping
-    public ResponseEntity<Object> create(@RequestBody LeituraDTO dto) {
+    public ResponseEntity<Object> create(@Valid @RequestBody LeituraDTO dto) {
         try {
             var res = leituraService.create(dto);
             /**
@@ -75,7 +76,7 @@ public class LeituraController {
      * @throws NotFoundException
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable long id, @RequestBody LeituraDTO dto) {
+    public ResponseEntity<Object> update(@PathVariable long id, @Valid @RequestBody LeituraDTO dto) {
         try {
             return ResponseEntity.ok().body(leituraService.update(id, dto));
         } catch (NotFoundException e) {

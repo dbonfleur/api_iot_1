@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import utfpr.edu.br.api_iot_1.dto.SensorDTO;
 import utfpr.edu.br.api_iot_1.exception.NotFoundException;
 import utfpr.edu.br.api_iot_1.model.Sensor;
@@ -26,7 +27,7 @@ public class SensorController {
     private SensorService sensorService;
 
     @PostMapping
-    public ResponseEntity<Object> create(@RequestBody SensorDTO dto) {
+    public ResponseEntity<Object> create(@Valid @RequestBody SensorDTO dto) {
         try {
             var res = sensorService.create(dto);
             /**
@@ -75,7 +76,7 @@ public class SensorController {
      * @throws NotFoundException
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@PathVariable long id, @RequestBody SensorDTO dto) {
+    public ResponseEntity<Object> update(@PathVariable long id, @Valid @RequestBody SensorDTO dto) {
         try {
             return ResponseEntity.ok().body(sensorService.update(id, dto));
         } catch (NotFoundException e) {

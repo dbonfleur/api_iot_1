@@ -1,7 +1,9 @@
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBUEkgYXV0aGVudGljYXRpb24iLCJ1c2VybmFtZSI6ImRhbmllbEBlbWFpbC5jb20iLCJpYXQiOjE3MTMzODc5ODgsImV4cCI6MTcxMzQyMzk4OCwiaXNzIjoiVVRGUFIifQ.KI5UOCBiDL3I6jv0dmNnut-05S24ikt-PBpuPIOzkz4
 @URL=http://localhost:8080/sensor
 ### CREATE
 POST {{URL}}
 Content-Type: application/json
+Authorization: {{token}}
 
 {
     "nome" : "Mov-1",
@@ -12,15 +14,20 @@ Content-Type: application/json
 
 ### GET ALL
 GET {{URL}}
+Authorization: {{token}}
 ### GET ID
 GET {{URL}}/1
+Authorization: {{token}}
 ### GET ALL SENSOR BY DISPOSITIVO
 GET {{URL}}/dispositivo/1
+Authorization: {{token}}
 ### DELETE
 DELETE {{URL}}/1
+Authorization: {{token}}
 ### PUT
 PUT {{URL}}/1
 Content-Type: application/json
+Authorization: {{token}}
 
 {
     "nome" : "Mov-2",
